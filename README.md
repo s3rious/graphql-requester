@@ -14,7 +14,7 @@ import requester, { dedupe } from 'graphql-requester'
 
 const request = requester({
   url: 'https://countries.trevorblades.com/',
-  middlwares: [ dedupe ],
+  middlewares: [ dedupe ],
 })
 
 request('countries', `{
