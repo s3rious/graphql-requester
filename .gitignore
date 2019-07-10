@@ -1,0 +1,14 @@
+.idea
+.DS_Store
+.eslintcache
+.audit.json
+.vscode
+.tmp
+.coverage
+.scannerwork
+
+*.iml
+*.log*
+*-build
+
+node_modules

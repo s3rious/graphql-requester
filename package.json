@@ -1,0 +1,48 @@
+{
+  "name": "graphql-requester",
+  "version": "1.0.0",
+  "description": "Axios-based library used to request data from grapql (now with middlewares!)",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -cw",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s3rious/graphql-requester.git"
+  },
+  "keywords": [
+    "graphql",
+    "request",
+    "xhr",
+    "fetch",
+    "axios",
+    "middlware"
+  ],
+  "author": "s3rious a.k.a. Leonid Semenov <canismajor@kaschenka.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/s3rious/graphql-requester/issues"
+  },
+  "homepage": "https://github.com/s3rious/graphql-requester#readme",
+  "dependencies": {
+    "axios": "^0.19.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^24.0.15",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0",
+    "jest-mock-axios": "^3.0.0",
+    "typescript": "^3.5.3"
+  }
+}
