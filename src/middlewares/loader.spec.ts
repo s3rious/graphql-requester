@@ -5,7 +5,7 @@ import loader from './loader'
 
 const ENDPOINT = 'https://example.com/graphql'
 
-describe('sb-request-new/loader', () => {
+describe('graphql-requester/loader', () => {
 
   beforeEach(() => {
     mockAxios.reset()

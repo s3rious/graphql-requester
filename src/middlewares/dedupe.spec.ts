@@ -9,7 +9,7 @@ const request = Requester({
   middlewares: [ dedupe ],
 })
 
-describe('sb-request-new/dedupe', () => {
+describe('graphql-requester/dedupe', () => {
 
   beforeEach(() => {
     mockAxios.reset()

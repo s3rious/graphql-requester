@@ -9,7 +9,7 @@ const request = Requester({
   middlewares: [ errorExtract ],
 })
 
-describe('sb-request-new/errorExtract', () => {
+describe('graphql-requester/errorExtract', () => {
 
   beforeEach(() => {
     mockAxios.reset()

@@ -5,7 +5,7 @@ import Requester, { Middleware } from './requester'
 const ENDPOINT = 'https://example.com/graphql'
 const request = Requester({ url: ENDPOINT })
 
-describe('sb-request-new', () => {
+describe('graphql-requester', () => {
 
   beforeEach(() => {
     mockAxios.reset()
