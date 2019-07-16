@@ -11,7 +11,10 @@
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -cw",
-    "test": "jest",
+    "tslint": "tslint --project tsconfig.json --config tslint.json 'src/**/*.ts?(x)'",
+    "jest": "jest",
+    "test": "npm run tslint && npm run jest",
+    "prettier": "prettier --write src/**/*.ts",
     "tslint-check": "tslint-config-prettier-check ./tslint.json"
   },
   "repository": {
