@@ -1,4 +1,4 @@
-# graphql-requester &middot; [![Travis CI Status](https://travis-ci.org/s3rious/graphql-requester.svg?branch=master)](https://travis-ci.org/s3rious/graphql-requester) [![codecov coverage](https://codecov.io/gh/s3rious/graphql-requester/branch/master/graph/badge.svg)](https://codecov.io/gh/s3rious/graphql-requester) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/s3rious/graphql-requester/blob/master/LICENSE) 
+# graphql-requester &middot; [![NPM package](https://img.shields.io/npm/v/graphql-requester.svg)](https://www.npmjs.com/package/graphql-requester) [![Travis CI Status](https://travis-ci.org/s3rious/graphql-requester.svg?branch=master)](https://travis-ci.org/s3rious/graphql-requester) [![codecov coverage](https://codecov.io/gh/s3rious/graphql-requester/branch/master/graph/badge.svg)](https://codecov.io/gh/s3rious/graphql-requester) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/s3rious/graphql-requester/blob/master/LICENSE) 
 
 Axios-based library used to request data from graphql (now with middlewares!).
 
