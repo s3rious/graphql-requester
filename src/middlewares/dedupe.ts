@@ -1,33 +1,31 @@
-import { Middleware } from '../requester'
-
+import { Middleware } from "../requester";
 
 export type DedupeOpts = {
-  multiple?: boolean
-}
+  multiple?: boolean;
+};
 
-const requests = new Map()
+const requests = new Map();
 
-const dedupe: Middleware<DedupeOpts> = (ctx) => {
-  const { multiple = false } = ctx.opts || {}
+const dedupe: Middleware<DedupeOpts> = ctx => {
+  const { multiple = false } = ctx.opts || {};
 
   if (multiple) {
-    return
+    return;
   }
 
-  const cacheKey = `${ctx.name}.${ctx.query}`
+  const cacheKey = `${ctx.name}.${ctx.query}`;
 
   if (requests.has(cacheKey)) {
-    const call = requests.get(cacheKey)
-    ctx.call = call
-    ctx.cancelled = true
+    const call = requests.get(cacheKey);
+    ctx.call = call;
+    ctx.cancelled = true;
 
-    return
+    return;
   }
 
-  ctx.call.finally(() => requests.delete(cacheKey))
+  ctx.call.finally(() => requests.delete(cacheKey));
 
-  requests.set(cacheKey, ctx.call)
-}
+  requests.set(cacheKey, ctx.call);
+};
 
-
-export default dedupe
+export default dedupe;

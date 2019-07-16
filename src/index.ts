@@ -1,16 +1,19 @@
-import Requester from './requester'
 import {
   dataExtract,
+  dedupe,
+  DedupeOpts,
   errorExtract,
-  loader, LoaderOpts,
-  dedupe, DedupeOpts,
-} from './middlewares'
+  loader,
+  LoaderOpts
+} from "./middlewares";
+import Requester from "./requester";
 
 export {
-  Requester,
-
   dataExtract,
   errorExtract,
-  loader, LoaderOpts,
-  dedupe, DedupeOpts,
-}
+  loader,
+  LoaderOpts,
+  dedupe,
+  DedupeOpts,
+  Requester
+};

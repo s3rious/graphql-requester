@@ -11,7 +11,8 @@
   "scripts": {
     "build": "rollup -c",
     "watch": "rollup -cw",
-    "test": "jest"
+    "test": "jest",
+    "tslint-check": "tslint-config-prettier-check ./tslint.json"
   },
   "repository": {
     "type": "git",
@@ -37,17 +38,20 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.15",
+    "@types/prettier": "^1.16.4",
     "@types/rollup": "^0.54.0",
     "@types/rollup-plugin-commonjs": "^9.3.1",
     "@types/rollup-plugin-node-resolve": "^4.1.0",
     "jest": "^24.8.0",
     "jest-mock-axios": "^3.0.0",
+    "prettier": "^1.18.2",
     "rollup": "^1.17.0",
     "rollup-plugin-commonjs": "^10.0.1",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-typescript2": "^0.22.0",
     "ts-jest": "^24.0.2",
     "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.5.3"
   }
 }

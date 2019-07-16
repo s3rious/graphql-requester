@@ -1,28 +1,20 @@
-module.exports = function (wallaby) {
-
+module.exports = function(wallaby) {
   return {
     env: {
-      type: 'node',
+      type: "node"
     },
 
     compilers: {
-      '**/*.ts?(x)': wallaby.compilers.typeScript({
-        typescript: require('typescript'),
-        module: 'commonjs',
+      "**/*.ts?(x)": wallaby.compilers.typeScript({
+        module: "commonjs",
+        typescript: require("typescript")
       })
     },
 
-    testFramework: 'jest',
+    testFramework: "jest",
 
-    files: [
-      './jest.init.js',
+    files: ["./jest.init.js", "./src/**/*.ts", "!./src/**/*.spec.ts"],
 
-      './src/**/*.ts',
-      '!./src/**/*.spec.ts',
-    ],
-
-    tests: [
-      './src/**/*.spec.ts',
-    ],
-  }
-}
+    tests: ["./src/**/*.spec.ts"]
+  };
+};

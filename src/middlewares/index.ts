@@ -1,12 +1,14 @@
-import dataExtract from './dataExtract'
-import errorExtract from './dataExtract'
-import loader, { LoaderInitialiser, LoaderOpts } from './loader'
-import dedupe, { DedupeOpts } from './dedupe'
-
+import dataExtract from "./dataExtract";
+import dedupe, { DedupeOpts } from "./dedupe";
+import errorExtract from "./errorExtract";
+import loader, { LoaderInitialiser, LoaderOpts } from "./loader";
 
 export {
   dataExtract,
   errorExtract,
-  loader, LoaderInitialiser, LoaderOpts,
-  dedupe, DedupeOpts,
-}
+  loader,
+  LoaderInitialiser,
+  LoaderOpts,
+  dedupe,
+  DedupeOpts
+};

@@ -1,183 +1,182 @@
-import mockAxios from 'jest-mock-axios'
-import Requester from '../requester'
-import loader from './loader'
+// tslint:disable: no-empty
 
+import mockAxios from "jest-mock-axios";
+import Requester from "../requester";
+import loader from "./loader";
 
-const ENDPOINT = 'https://example.com/graphql'
+const ENDPOINT = "https://example.com/graphql";
 
-describe('graphql-requester/loader', () => {
-
+describe("graphql-requester/loader", () => {
   beforeEach(() => {
-    mockAxios.reset()
-  })
+    mockAxios.reset();
+  });
 
-  it('should call onBefore and onAfter in right order', (done) => {
-    const params: any = [ 'test', '', { withLoader: true } ]
-    const expectedData = 'test'
-    const response = { data: 'test' }
+  it("should call onBefore and onAfter in right order", done => {
+    const params: any = ["test", "", { withLoader: true }];
+    const expectedData = "test";
+    const response = { data: "test" };
 
-    const onBeforeFn = jest.fn()
-    const onAfterFn  = jest.fn()
-    let onBeforeCall: Date
-    let onAfterCall: Date
+    const onBeforeFn = jest.fn();
+    const onAfterFn = jest.fn();
+    let onBeforeCall: Date;
+    let onAfterCall: Date;
 
     const onBefore = () => {
-      onBeforeFn()
-      onBeforeCall = new Date()
-    }
+      onBeforeFn();
+      onBeforeCall = new Date();
+    };
 
     const onAfter = () => {
-      onAfterFn()
-      onAfterCall = new Date()
-    }
+      onAfterFn();
+      onAfterCall = new Date();
+    };
 
     const loaderMiddleware = loader({
       onBefore,
-      onAfter,
-    })
+      onAfter
+    });
 
     const localRequest = Requester({
       url: ENDPOINT,
-      middlewares: [ loaderMiddleware ],
-    })
+      middlewares: [loaderMiddleware]
+    });
 
     localRequest(params[0], params[1], params[2]).then(({ data }) => {
-      expect(onBeforeFn).toBeCalled()
-      expect(onAfterFn).toBeCalled()
-      expect((onBeforeCall.getTime() < onAfterCall.getTime())).toBeTruthy()
-      expect(data).toEqual(expectedData)
+      expect(onBeforeFn).toBeCalled();
+      expect(onAfterFn).toBeCalled();
+      expect(onBeforeCall.getTime() < onAfterCall.getTime()).toBeTruthy();
+      expect(data).toEqual(expectedData);
 
-      done()
-    })
+      done();
+    });
 
     setTimeout(() => {
-      mockAxios.mockResponse(response)
-    }, 2)
-  })
+      mockAxios.mockResponse(response);
+    }, 2);
+  });
 
-  it('should call onBefore and onAfter in right order if failed', (done) => {
-    const params: any = [ 'test', '', { withLoader: true } ]
-    const expectedError = 'Error'
-    const response = { error: 'Error' }
+  it("should call onBefore and onAfter in right order if failed", done => {
+    const params: any = ["test", "", { withLoader: true }];
+    const expectedError = "Error";
+    const response = { error: "Error" };
 
-    const onBeforeFn = jest.fn()
-    const onAfterFn  = jest.fn()
-    let onBeforeCall: Date
-    let onAfterCall: Date
+    const onBeforeFn = jest.fn();
+    const onAfterFn = jest.fn();
+    let onBeforeCall: Date;
+    let onAfterCall: Date;
 
     const onBefore = () => {
-      onBeforeFn()
-      onBeforeCall = new Date()
-    }
+      onBeforeFn();
+      onBeforeCall = new Date();
+    };
 
     const onAfter = () => {
-      onAfterFn()
-      onAfterCall = new Date()
-    }
+      onAfterFn();
+      onAfterCall = new Date();
+    };
 
     const loaderMiddleware = loader({
       onBefore,
-      onAfter,
-    })
+      onAfter
+    });
 
     const localRequest = Requester({
       url: ENDPOINT,
-      middlewares: [ loaderMiddleware ],
-    })
+      middlewares: [loaderMiddleware]
+    });
 
-    localRequest(params[0], params[1], params[2]).then(() => {}, ({ error }) => {
-      expect(onBeforeFn).toBeCalled()
-      expect(onAfterFn).toBeCalled()
-      expect((onBeforeCall.getTime() < onAfterCall.getTime())).toBeTruthy()
-      expect(error).toEqual(expectedError)
+    localRequest(params[0], params[1], params[2]).then(
+      () => {},
+      ({ error }) => {
+        expect(onBeforeFn).toBeCalled();
+        expect(onAfterFn).toBeCalled();
+        expect(onBeforeCall.getTime() < onAfterCall.getTime()).toBeTruthy();
+        expect(error).toEqual(expectedError);
 
-      done()
-    })
+        done();
+      }
+    );
 
     setTimeout(() => {
-      mockAxios.mockError(response)
-    }, 2)
-  })
+      mockAxios.mockError(response);
+    }, 2);
+  });
 
-  it('should work normally if withLoader is false', (done) => {
-    const params: any = [ 'test', '', { withLoader: false } ]
-    const expectedData = 'test'
-    const response = { data: 'test' }
+  it("should work normally if withLoader is false", done => {
+    const params: any = ["test", "", { withLoader: false }];
+    const expectedData = "test";
+    const response = { data: "test" };
 
-    const onBeforeFn = jest.fn()
-    const onAfterFn  = jest.fn()
+    const onBeforeFn = jest.fn();
+    const onAfterFn = jest.fn();
 
     const onBefore = () => {
-      onBeforeFn()
-    }
+      onBeforeFn();
+    };
 
     const onAfter = () => {
-      onAfterFn()
-    }
+      onAfterFn();
+    };
 
     const loaderMiddleware = loader({
       onBefore,
-      onAfter,
-    })
+      onAfter
+    });
 
     const localRequest = Requester({
       url: ENDPOINT,
-      middlewares: [ loaderMiddleware ],
-    })
+      middlewares: [loaderMiddleware]
+    });
 
     localRequest(params[0], params[1], params[2]).then(({ data }) => {
-      expect(onBeforeFn).not.toBeCalled()
-      expect(onAfterFn).not.toBeCalled()
-      expect(data).toEqual(expectedData)
+      expect(onBeforeFn).not.toBeCalled();
+      expect(onAfterFn).not.toBeCalled();
+      expect(data).toEqual(expectedData);
 
-      done()
-    })
+      done();
+    });
 
     setTimeout(() => {
-      mockAxios.mockResponse(response)
-    }, 2)
-  })
+      mockAxios.mockResponse(response);
+    }, 2);
+  });
 
-  it('should work normally if no opts passed', (done) => {
-    const params: any = [ 'test', '' ]
-    const expectedData = 'test'
-    const response = { data: 'test' }
+  it("should work normally if no opts passed", done => {
+    const params: any = ["test", ""];
+    const expectedData = "test";
+    const response = { data: "test" };
 
-    const onBeforeFn = jest.fn()
-    const onAfterFn  = jest.fn()
-    let onBeforeCall: Date
-    let onAfterCall: Date
+    const onBeforeFn = jest.fn();
+    const onAfterFn = jest.fn();
 
     const onBefore = () => {
-      onBeforeFn()
-      onBeforeCall = new Date()
-    }
+      onBeforeFn();
+    };
 
     const onAfter = () => {
-      onAfterFn()
-      onAfterCall = new Date()
-    }
+      onAfterFn();
+    };
 
     const loaderMiddleware = loader({
       onBefore,
-      onAfter,
-    })
+      onAfter
+    });
 
     const localRequest = Requester({
       url: ENDPOINT,
-      middlewares: [ loaderMiddleware ],
-    })
+      middlewares: [loaderMiddleware]
+    });
 
     localRequest(params[0], params[1], params[2]).then(({ data }) => {
-      expect(onBeforeFn).not.toBeCalled()
-      expect(onAfterFn).not.toBeCalled()
-      expect(data).toEqual(expectedData)
+      expect(onBeforeFn).not.toBeCalled();
+      expect(onAfterFn).not.toBeCalled();
+      expect(data).toEqual(expectedData);
 
-      done()
-    })
+      done();
+    });
 
     setTimeout(() => {
-      mockAxios.mockResponse(response)
-    }, 2)
-  })
-})
+      mockAxios.mockResponse(response);
+    }, 2);
+  });
+});
