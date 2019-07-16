@@ -1,6 +1,6 @@
 {
   "name": "graphql-requester",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Axios-based library used to request data from grapql (now with middlewares!)",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
