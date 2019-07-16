@@ -24,7 +24,7 @@ describe('graphql-requester/errorExtract', () => {
       },
     ]
     const response = {
-      data: null,
+      data: {},
       errors: [
         {
           'message': 'Field "name" must not have a selection since type "String!" has no subfields.',
