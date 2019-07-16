@@ -1,0 +1,31 @@
+[data-component="CountryList"] {
+  list-style-type: none;
+  
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+
+  padding: 0.5em 1em;
+  margin: 0;
+}
+
+[data-component="CountryList"] li {
+  margin: 0.25em 0;
+}
+
+[data-component="CountryList"] li::before {
+  content: attr(data-emoji);
+  margin-right: 1pt;
+}
+
+
+@media screen and (max-width: 1024px) {
+  [data-component="CountryList"] {
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media screen and (max-width: 528px) {
+  [data-component="CountryList"] {
+    grid-template-columns: 100%;
+  }
+}
