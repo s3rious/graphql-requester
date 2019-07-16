@@ -1,4 +1,3 @@
-import '@babel/polyfill'
 import Requester from './requester'
 import {
   dataExtract,
@@ -7,10 +6,9 @@ import {
   dedupe, DedupeOpts,
 } from './middlewares'
 
-
-export default Requester
-
 export {
+  Requester,
+
   dataExtract,
   errorExtract,
   loader, LoaderOpts,

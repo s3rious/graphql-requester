@@ -1,6 +1,26 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "lib": [ "es2018", "dom" ],
+    "baseUrl": "src",
+    "module": "es6",
+    "moduleResolution": "node",
+    "lib": [ "dom", "esnext" ],
+
+    "target": "es3",
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationDir": "./dist",
+
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+    "forceConsistentCasingInFileNames": true,
   },
+
+  "include": [
+    "src/**/*"
+  ],
+
+  "exclude": [
+    "node_modules"
+  ]
 }
