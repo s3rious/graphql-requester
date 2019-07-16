@@ -23,11 +23,12 @@
   },
   "keywords": [
     "graphql",
+    "graphql-client",
     "request",
     "xhr",
     "fetch",
     "axios",
-    "middlware"
+    "middleware"
   ],
   "author": "s3rious a.k.a. Leonid Semenov <canismajor@kaschenka.ru>",
   "license": "MIT",
