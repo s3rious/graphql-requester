@@ -1,43 +1,28 @@
-const babelConfig = require('./.babelrc.js')
+module.exports = function (wallaby) {
 
-const folders = [
-  'src',
-]
+  return {
+    env: {
+      type: 'node',
+    },
 
-const getFiles = (isTests) =>
-  folders
-    .map((folder) => {
-      if (isTests) {
-        return [
-          `./${folder}/**/*.spec.js`,
-          `./${folder}/**/*.spec.ts`,
-        ]
-      }
+    compilers: {
+      '**/*.ts?(x)': wallaby.compilers.typeScript({
+        typescript: require('typescript'),
+        module: 'commonjs',
+      })
+    },
 
-      return [
-        `./${folder}/**/*.js`,
-        `./${folder}/**/*.ts?(x)`,
-        `!./${folder}/**/.story.js`,
-        `!./${folder}/**/*.spec.js`,
-        `!./${folder}/**/*.spec.ts`,
-      ]
-    })
-    .reduce((array, pair) => [ ...array, ...pair ], [])
+    testFramework: 'jest',
 
+    files: [
+      './jest.init.js',
 
-module.exports = (wallaby) => ({
-  env: {
-    type: 'node',
-    runner: 'node',
-  },
-  compilers: {
-    '**/*.js': wallaby.compilers.babel(babelConfig),
-    '**/*.ts': wallaby.compilers.babel(babelConfig),
-  },
-  files: [
-    './jest.init.js',
-    ...getFiles(false),
-  ],
-  tests: getFiles(true),
-  testFramework: 'jest',
-})
+      './src/**/*.ts',
+      '!./src/**/*.spec.ts',
+    ],
+
+    tests: [
+      './src/**/*.spec.ts',
+    ],
+  }
+}
