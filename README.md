@@ -56,7 +56,7 @@ products {
 }
 ```
 ##### Options, used by middlewares.
-Object. For example `dedupe` middleware uses `muliple` one: `{ multiple: true }`
+Object. For example `dedupe` middleware uses `multiple` one: `{ multiple: true }`
 
 ### Middlewares
 
